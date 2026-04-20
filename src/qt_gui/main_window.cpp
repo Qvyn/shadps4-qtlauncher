@@ -1403,7 +1403,7 @@ tr("No emulator version was selected.\nThe Version Manager menu will then open.\
     EmulatorState::GetInstance()->SetGameRunning(true);
     last_game_path = path;
 
-    QString workDir = QDir::currentPath();
+    QString workDir = fileInfo.absolutePath();
     m_ipc_client->startEmulator(fileInfo, final_args, workDir);
     m_ipc_client->setActiveController(GamepadSelect::GetSelectedGamepad());
 }
@@ -1471,7 +1471,7 @@ void MainWindow::StartEmulatorExecutable(std::filesystem::path emuPath, QString 
     }
 
     EmulatorState::GetInstance()->SetGameRunning(true);
-    QString workDir = QDir::currentPath();
+    QString workDir = fileInfo.absolutePath();
     m_ipc_client->startEmulator(fileInfo, args, workDir, disable_ipc);
 }
 
